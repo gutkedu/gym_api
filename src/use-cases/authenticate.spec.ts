@@ -4,7 +4,7 @@ import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-user
 import { AuthenticateUseCase } from './authenticate'
 import { hash } from 'bcryptjs'
 import { InvalidCredentialsError } from './errors/invalid-cretentials-error'
-import { IUsersRepository } from '@/repositories/prisma/users-repository'
+import { IUsersRepository } from '@/repositories/users-repository'
 
 let usersRepository: IUsersRepository
 let sut: AuthenticateUseCase

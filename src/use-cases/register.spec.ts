@@ -4,7 +4,7 @@ import { RegisterUseCase } from '@/use-cases/register'
 import { compare } from 'bcryptjs'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { UserAlreadyExistsError } from './errors/user-already-exists-error'
-import { IUsersRepository } from '@/repositories/prisma/users-repository'
+import { IUsersRepository } from '@/repositories/users-repository'
 
 let usersRepository: IUsersRepository
 let registerUseCase: RegisterUseCase
