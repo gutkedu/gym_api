@@ -19,7 +19,7 @@ describe('Check in use case', () => {
     sut = new CheckInUseCase(checkInsRepository, gymsRepository)
 
     createdGym = await gymsRepository.create({
-      title: 'Gym Name',
+      name: 'Gym Name',
       description: 'Gym Description',
       phone: '123456789',
       latitude: 0,
