@@ -22,8 +22,8 @@ describe('Check in use case', () => {
       name: 'Gym Name',
       description: 'Gym Description',
       phone: '123456789',
-      latitude: 0,
-      longitude: 0,
+      latitude: -27,
+      longitude: -49,
     })
 
     vi.useFakeTimers()
@@ -37,8 +37,8 @@ describe('Check in use case', () => {
     const { checkIn } = await sut.execute({
       gymId: createdGym.id,
       userId: 'user-id',
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: -27,
+      userLongitude: -49,
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
@@ -52,16 +52,16 @@ describe('Check in use case', () => {
     await sut.execute({
       gymId: createdGym.id,
       userId: 'user-id',
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: -27,
+      userLongitude: -49,
     })
 
     await expect(async () => {
       await sut.execute({
         gymId: createdGym.id,
         userId: 'user-id',
-        userLatitude: 0,
-        userLongitude: 0,
+        userLatitude: -27,
+        userLongitude: -49,
       })
     }).rejects.toBeInstanceOf(Error)
   })
@@ -72,8 +72,8 @@ describe('Check in use case', () => {
     await sut.execute({
       gymId: createdGym.id,
       userId: 'user-id',
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: -27,
+      userLongitude: -49,
     })
 
     vi.setSystemTime(new Date(2022, 0, 21, 8, 0, 0))
@@ -81,10 +81,29 @@ describe('Check in use case', () => {
     const { checkIn } = await sut.execute({
       gymId: createdGym.id,
       userId: 'user-id',
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: -27,
+      userLongitude: -49,
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
+  })
+
+  it('should not be able to check in for a distant gym', async () => {
+    const distantGym = await gymsRepository.create({
+      name: 'Gym 2',
+      description: 'Gym Description 2',
+      phone: '123456789',
+      latitude: 0,
+      longitude: 0,
+    })
+
+    await expect(() =>
+      sut.execute({
+        gymId: distantGym.id,
+        userId: 'user-id',
+        userLatitude: -27,
+        userLongitude: -49,
+      }),
+    ).rejects.toThrowError()
   })
 })
