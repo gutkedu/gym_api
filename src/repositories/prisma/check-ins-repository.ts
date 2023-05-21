@@ -27,4 +27,14 @@ export class CheckInsRepository implements ICheckInsRepository {
 
     return checkIn
   }
+
+  async findManyByUserId(userId: string): Promise<CheckIn[]> {
+    const checkIns = await prisma.checkIn.findMany({
+      where: {
+        user_id: userId,
+      },
+    })
+
+    return checkIns
+  }
 }
