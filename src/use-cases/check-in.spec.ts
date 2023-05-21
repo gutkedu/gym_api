@@ -6,6 +6,8 @@ import { InMemoryCheckInssRepository } from '@/repositories/in-memory/in-memory-
 import { IGymsRepository } from '@/repositories/gyms-repository'
 import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
 import { Gym } from '@prisma/client'
+import { MaxNumberOfCheckInsError } from './errors/max-number-of-check-ins-error'
+import { MaxDistanceError } from './errors/max-distance.error'
 
 let checkInsRepository: ICheckInsRepository
 let gymsRepository: IGymsRepository
@@ -63,7 +65,7 @@ describe('Check in use case', () => {
         userLatitude: -27,
         userLongitude: -49,
       })
-    }).rejects.toBeInstanceOf(Error)
+    }).rejects.toBeInstanceOf(MaxNumberOfCheckInsError)
   })
 
   it('should not be able to check in twice on different days', async () => {
@@ -104,6 +106,6 @@ describe('Check in use case', () => {
         userLatitude: -27,
         userLongitude: -49,
       }),
-    ).rejects.toThrowError()
+    ).rejects.toBeInstanceOf(MaxDistanceError)
   })
 })
