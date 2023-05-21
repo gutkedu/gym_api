@@ -28,8 +28,19 @@ export class CheckInsRepository implements ICheckInsRepository {
     return checkIn
   }
 
-  async findManyByUserId(userId: string): Promise<CheckIn[]> {
+  async findManyByUserId(userId: string, page: number): Promise<CheckIn[]> {
     const checkIns = await prisma.checkIn.findMany({
+      where: {
+        user_id: userId,
+      },
+      skip: (page - 1) * 20,
+    })
+
+    return checkIns
+  }
+
+  async countByUserId(userId: string): Promise<number> {
+    const checkIns = await prisma.checkIn.count({
       where: {
         user_id: userId,
       },
