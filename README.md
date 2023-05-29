@@ -10,17 +10,19 @@ For detailed information on the project requirements, please refer to the [requi
 
 To set up the project, follow the steps below:
 
-1. Start the Docker containers by running the following command:
+1. Configure the environment variables by creating a `.env` file based on the provided `.env.example` file.
+
+2. Start the Docker containers by running the following command:
    ```shell
    docker compose up -d
    ```
 
-2. Apply the database migrations using Prisma by executing the following command:
+3. Apply the database migrations using Prisma by executing the following command:
    ```shell
    npx prisma migrate dev
    ```
 
-3. Run the project using the command:
+4. Run the project using the command:
    ```shell
    npm run start:dev
    ```
