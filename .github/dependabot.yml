@@ -8,8 +8,6 @@ updates:
       timezone: "America/Sao_Paulo"
       target-branch: "master"
     open-pull-requests-limit: 10
-    allow:
-      - dependency-name: "@types/node"
     versioning-strategy: "auto"
 
 
