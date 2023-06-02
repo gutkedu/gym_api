@@ -4,7 +4,7 @@ GYM_API is a GymPass-style app developed as a project for learning purposes, wit
 
 ## Requirements
 
-For detailed information on the project requirements, please refer to the [requirements document](https://github.com/gutkedu/gym_api/edit/master/docs/requisitos.md) located in the `docs` folder.
+For detailed information on the project requirements, please refer to the [requirements document]((https://github.com/gutkedu/gym_api/blob/master/docs/requirements.md)) located in the `docs` folder.
 
 ## Setup
 
