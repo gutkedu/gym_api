@@ -2,11 +2,11 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
+    target-branch: "master"
     schedule:
       interval: "daily"
       time: "08:00"
       timezone: "America/Sao_Paulo"
-      target-branch: "master"
     open-pull-requests-limit: 10
     versioning-strategy: "auto"
 
