@@ -4,10 +4,11 @@ updates:
     directory: "/"
     target-branch: "master"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      day: "sunday"
       time: "08:00"
       timezone: "America/Sao_Paulo"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 25
     versioning-strategy: "auto"
 
 
